@@ -57,4 +57,4 @@ MarkerRipple markerRipple = new MarkerRipple(this, sydney, googleMap)
 
 
 >   Thanks to
->   Tracy Gipson  ([a tracygipson link](https://github.com/tracygipson))
+>   Tracy Gipson  ([tracygipson](https://github.com/tracygipson))
