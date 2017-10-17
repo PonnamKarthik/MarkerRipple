@@ -2,6 +2,7 @@ package io.github.ponnamkarthik.mapmarkerripple;
 
 import android.animation.IntEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.location.Location;
 import android.support.annotation.IntegerRes;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -17,12 +18,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class MarkerRipple {
 
+    Context context;
     int radius = 10000;
     float strokeWidth = 3f;
 
     ValueAnimator vAnimator;
 
-    @IntegerRes
     int strokeColor = R.color.purple;
 
     Circle circle;
@@ -31,7 +32,8 @@ public class MarkerRipple {
 
     int duration = 2000;
 
-    public MarkerRipple(LatLng latLng, GoogleMap googleMap) {
+    public MarkerRipple(Context context, LatLng latLng, GoogleMap googleMap) {
+        this.context = context;
         if(latLng != null) {
             this.location = new Location("");
             location.setLatitude(latLng.latitude);
@@ -67,7 +69,7 @@ public class MarkerRipple {
         return this;
     }
 
-    public MarkerRipple setStrokeColor (@IntegerRes int strokeColor) {
+    public MarkerRipple setStrokeColor (int strokeColor) {
         this.strokeColor = strokeColor;
         return this;
     }
@@ -85,7 +87,7 @@ public class MarkerRipple {
                 circle.setCenter(new LatLng(location.getLatitude(), location.getLongitude()));
             } else {
                 circle = googleMap.addCircle(new CircleOptions().center(new LatLng(location.getLatitude(), location.getLongitude()))
-                        .strokeColor(strokeColor)
+                        .strokeColor(context.getResources().getColor(strokeColor))
                         .strokeWidth(strokeWidth)
                         .radius(radius));
             }

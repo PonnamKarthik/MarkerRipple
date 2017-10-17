@@ -46,9 +46,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15f));
 
-        MarkerRipple markerRipple = new MarkerRipple(sydney, null)
+        MarkerRipple markerRipple = new MarkerRipple(this, sydney, googleMap)
                 .setRadius(100000)
                 .setDuration(2000)
+                .setStrokeColor(R.color.colorAccent)
                 .startRipple();
 
     }
